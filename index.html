@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tesio Scientific Calculator</title>
+    <style>
+    body {
+    font-family: sans-serif;
+    background: #f1f1f1;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.calculator {
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 20px;
+    width: 320px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.screen {
+    background: #333;
+    color: #0f0;
+    font-size: 2em;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: right;
+    border-radius: 10px;
+    overflow-x: auto;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+button {
+    padding: 15px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 10px;
+    background-color: #444;
+    color: white;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+button:hover {
+    background-color: #666;
+}
+
+.wide {
+    grid-column: span 2;
+}
+
+.equal {
+    background-color: #28a745;
+}
+
+.equal:hover {
+    background-color: #218838;
+}
+
+.operator {
+    background-color: #0069d9;
+}
+
+.operator:hover {
+    background-color: #0056b3;
+}
+
+
+footer {
+    margin-top: 40px;
+    font-size: 2em;
+    text-align: center;
+    font-weight: bolder;
+    color: #555;
+}
+    </style>
+</head>
+<body>
+    
+    <div class="calculator">
+        <div class="screen" id="screen">0</div>
+        <div class="buttons">
+            <button onclick, keypress="clearScreen()">C</button>
+            <button onclick, keypress="del()">DEL</button>
+            <button onclick, keypress="append('%')">%</button>
+            <button class="operator" onclick, keypress="append('/')">÷</button>
+    
+            <button onclick, keypress="append('7')">7</button>
+            <button onclick, keypress="append('8')">8</button>
+            <button onclick, keypress="append('9')">9</button>
+            <button class="operator" onclick, keypress="append('*')">×</button>
+    
+            <button onclick="append('4')">4</button>
+            <button onclick="append('5')">5</button>
+            <button onclick="append('6')">6</button>
+            <button class="operator" onclick="append('-')">−</button>
+    
+            <button onclick="append('1')">1</button>
+            <button onclick="append('2')">2</button>
+            <button onclick="append('3')">3</button>
+            <button class="operator" onclick="append('+')">+</button>
+    
+            <button onclick="append('0')">0</button>
+            <button onclick="append('.')">.</button>
+            <button class="equal" onclick="calculate()">=</button>
+            <button onclick="append('**')">xʸ</button>
+    
+            <button onclick="append('Math.sqrt(')">√</button>
+            <button onclick="append('Math.log10(')">log</button>
+            <button onclick="append('Math.sin(')">sin</button>
+            <button onclick="append('Math.cos(')">cos</button>
+    
+            <button onclick="append('Math.tan(')">tan</button>
+            <button onclick="append('Math.PI')">π</button>
+            <button onclick="append('Math.E')">e</button>
+            <button onclick="append('(')">(</button>
+    
+            <button onclick="append(')')">)</button>
+            <button class="wide" onclick="append('^')">xʸ</button>
+
+            
+              
+
+        </div>
+    </div>
+    
+    <footer>
+            <p>&copy; Tenarzverse 2025. All rights reserved.</p>
+    </footer>
+    <script>
+      const screen = document.getElementById('screen');
+
+        function append(value) {
+            if (screen.textContent === "0") {
+                screen.textContent = value;
+            } else {
+                screen.textContent += value;
+            }
+        }
+
+        function clearScreen() {
+            screen.textContent = "0";
+        }
+
+        function del() {
+            screen.textContent = screen.textContent.slice(0, -1) || "0";
+        }
+
+        function calculate() {
+            try {
+                const result = eval(screen.textContent);
+                screen.textContent = result;
+            } catch {
+                screen.textContent = "Error";
+            }
+        }
+
+            
+
+    </script>
+</body>
+</html>
+    
+    
+    
+
+       
+    
